@@ -1,0 +1,91 @@
+<%-include('parts/navbar.ejs')%>
+      <!-- banner section end -->
+      <header style='position:relative;'>
+        <img src="images/books.jpg " style=' height:50vh; width: 100%; object-fit: cover;'>
+<p style="position: absolute; top: 30%;left: 50%;transform: translate(-50%) ;font-size: xxx-large; color: white; font-weight: 700; font-variant: small-caps;">let's read</p>
+      </header>
+  
+   </h1>
+  
+      <div class="arrival_section layout_padding">
+         <div class="container">
+            <div class="row">            
+ <% for (book of newbooks){%>  
+               <div class="col-sm-6 col-lg-4">
+                  <div class="image_1">
+                     <img style="position:absolute;width: 99%;height: 99%;" src="<%= book.img %>"/>
+                     <h2 class="jesusroch_text">J E S U S R O C H</h2>
+                     <p class="movie_text">Hollywood Movie</p>
+                  </div>
+               </div>
+          <%}%>
+               <div class="col-sm-8 col-lg-4">
+                  <h1 class="arrival_text">A r r i v a l</h1>
+                  <div class="movie_main">
+                     <div class="mins_text_1">150 mins</div>
+                     <div class="mins_text">Actions Movie</div>
+                     <div class="mins_text"><img src="images/icon-1.png"><span class="icon_1">Watchlist</span></div>
+                  </div>
+                  <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>
+                  <div class="rating_main">
+                     <div class="row">
+                        <div class="col-sm-6 col-lg-6">
+                           <div class="icon_2"><img src="images/icon-2.png"><span class="padding_10">4.6 Revieweed</span></div>
+                        </div>
+                        <div class="col-sm-6 col-lg-6">
+                           <div class="icon_2"><img src="images/icon-2.png"><span class="padding_10">Your Rateing</span></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="paly_bt"><a href="#">Play Now</a></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- arrival section end -->
+      <!-- movies section start -->
+      <div class="movies_section layout_padding">
+         <div class="container">
+            
+          
+            <div class="movies_section_2 layout_padding">
+             
+               <div class="movies_main"> 
+                  <div class="iamge_movies_main">
+                     <% for (var i = 0; i < books.length; i++) { %>
+
+                     <div class="iamge_movies">
+                        <div class="image_3">
+                           <img src="<%= books[i].img%>" class="image" style="width:100%">
+                           <div class="middle">
+                              <div class="playnow_bt">Play Now</div>
+                           </div>
+                        </div>
+                        <h1 class="code_text"><%= books[i].title%></h1>
+                        <p class="there_text"><%= books[i].author%> </p>
+                        <div class="star_icon">
+                           <ul>
+                              <li><a href="#"><img src="images/star-icon.png"></a></li>
+                              <li><a href="#"><img src="images/star-icon.png"></a></li>
+                              <li><a href="#"><img src="images/star-icon.png"></a></li>
+                              <li><a href="#"><img src="images/star-icon.png"></a></li>
+                              <li><a href="#"><img src="images/star-icon.png"></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                 
+                     <%}%>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="seebt_1"><a href="/books">See More</a></div>
+         </div>
+      </div>
+      <!-- movies section end -->
+      <!-- newsletter section start -->
+     
+      <!-- newsletter section end -->
+      <!-- cooming  section start -->
+
+      <%- include('parts/footer.ejs') %>
