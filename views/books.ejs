@@ -2,14 +2,13 @@
 <div style="margin: 5%;display: flex; flex-wrap: wrap;">
   <% for(book of allbooks){%>
   <div class="card" style="width: 250px ;margin: 2%;" >
-    <img s rc="..." class="card-img-top" alt="..." />
+    <img src="<%=book.img%>" class="card-img-top" alt="..." />
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title"><%=book.title%></h5>
       <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+   <%=book.description%>
       </p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="books/<%=book.id%>" class="btn btn-primary">Go somewhere</a>
     </div>
   
   </div>

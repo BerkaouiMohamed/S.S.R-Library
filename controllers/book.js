@@ -9,9 +9,7 @@ exports.booksController = (req, res, next) => {
       .catch(err => {
         next(err);
       });
-    }).catch(err => {
-      next(err);
-    });
+    })
   };
   exports.allbooksController =(req,res ,next)=>{
     bookmodel.getAllbooks().then(books =>
