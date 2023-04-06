@@ -20,24 +20,13 @@
                </div>
           <%}%>
                <div class="col-sm-8 col-lg-4">
-                  <h1 class="arrival_text">A r r i v a l</h1>
-                  <div class="movie_main">
-                     <div class="mins_text_1">150 mins</div>
-                     <div class="mins_text">Actions Movie</div>
-                     <div class="mins_text"><img src="images/icon-1.png"><span class="icon_1">Watchlist</span></div>
-                  </div>
+                  <h1 class="arrival_text">New BOOKS</h1>
+                  
                   <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>
                   <div class="rating_main">
-                     <div class="row">
-                        <div class="col-sm-6 col-lg-6">
-                           <div class="icon_2"><img src="images/icon-2.png"><span class="padding_10">4.6 Revieweed</span></div>
-                        </div>
-                        <div class="col-sm-6 col-lg-6">
-                           <div class="icon_2"><img src="images/icon-2.png"><span class="padding_10">Your Rateing</span></div>
-                        </div>
-                     </div>
+                
                   </div>
-                  <div class="paly_bt"><a href="#">Play Now</a></div>
+                  <div class="paly_bt"><a href="/books">all books</a></div>
                </div>
             </div>
          </div>
@@ -56,7 +45,7 @@
 
                      <div class="iamge_movies">
                         <div class="image_3">
-                           <img src="<%= books[i].img%>" class="image" style="width:100%">
+                  <a href=" books/<%=books[i]._id%>"    ><img  src="<%= books[i].img%>" class="image" style="width:100%"></a>     
                            <div class="middle">
                               <div class="playnow_bt">Play Now</div>
                            </div>
