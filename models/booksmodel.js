@@ -2,7 +2,6 @@ const mongoose=require('mongoose')
 
 
 var schemabook=mongoose.Schema({
-    _id:String,
     title:String,
     author:String,
     description:String,
@@ -78,7 +77,7 @@ exports.getOnebook = (id) => {
       return book.find({})
     })
       .then((books) => {
-         let book =books.find(b=>b._id===id)
+         let book =books.find(b=>b._id==id)
           console.log('/n hiii',typeof(id) ,book)
         mongoose.disconnect();
         resolve(book);
@@ -86,17 +85,16 @@ exports.getOnebook = (id) => {
       .catch((err) => {
       
         reject(err);
-      });
+      });   
   }); 
 };
 
 
-exports.addNewBook = (title,author ,description,date,img) => {
+exports.addNewBook = (title,author ,description,date,img,userId) => {
   return new Promise((resolve, reject) => {
     mongoose.connect(url)
     .then(() => {
       let newbook= new book({
-       _id:'  fd',
         title:title,
         author:author,
         description:description,
