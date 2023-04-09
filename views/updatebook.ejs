@@ -1,0 +1,23 @@
+<%-include('parts/navbar.ejs')%>
+<form method="post" action="/books/add" class="container" style="margin: 5%; padding: 0 15%;">
+  <h1 style="text-align: center;">Add a new book </h1>
+    <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="title" placeholder="title">
+      </div> 
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="author" placeholder="auther">
+      </div> 
+      <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="img" placeholder="image">
+      </div> 
+      <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1"  name="date" placeholder="date">
+      </div>  
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="discription">
+      </div> 
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<%-include('parts/footer.ejs') %>

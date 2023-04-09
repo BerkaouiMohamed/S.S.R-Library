@@ -44,6 +44,8 @@ exports.booksController = (req, res, next) => {
       });  
     })
   };
+
+
   exports.allbooksController =(req,res ,next)=>{
     bookmodel.getAllbooks().then(books =>{
    res.render('books',{allbooks:books,verifuser:req.session.userId })} 
@@ -51,12 +53,19 @@ exports.booksController = (req, res, next) => {
   }
 
 exports.mybookspageController=(req,res,next)=>{
-  bookmodel.getAllbooks().then((books)=>{
-    res.render('mybooks',{allbooks:books,verifuser:req.session.userId})
+  bookmodel.getMybooks( req.session.userId).then((books)=>{
+    res.render('mybooks',{mybooks:books,verifuser:req.session.userId})
   })
 }
 
-
+exports.deletebookController=(req,res,next)=>{
+  bookmodel.deletebook(req.body.id).then((test)=>{
+    console.log(test)
+    res.redirect('/mybooks')
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
 
   
 

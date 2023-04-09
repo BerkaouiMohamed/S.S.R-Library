@@ -20,6 +20,7 @@ router.get('/books/:id',gardauth.isauth,bookcontroller.onebooksController)
 
 
 router.get('/mybooks',gardauth.isauth,bookcontroller.mybookspageController)
-router.delete('/mybooks',gardauth.isauth,bookcontroller.mybookspageController)
+router.post('/mybooks/delete/:id',body,gardauth.isauth,bookcontroller.deletebookController)
+
 
 module.exports=router   

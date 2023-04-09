@@ -1,19 +1,21 @@
 <%-include('parts/navbar.ejs')%>
 <div style="margin: 5%;display: flex; flex-wrap: wrap;">
   <% for(book of mybooks){%>
-  <div class="card" style="width: 250px;height: 500px ;position: relative ;margin: 2%; " >
+  <div class="card" style="width: 250px;height: 550px ;position: relative ;margin: 2%; " >
     <img src="<%=book.img%>" class="card-img-top" alt="..."  style="height: 300px;"/>
     <div class="card-body" >
       <h5 class="card-title  " style="white-space:nowrap;"><%=book.title%></h5>
       <p class="card-text"style="white-space:nowrap;">
    <%=book.author%>
       </p>
-      <a href="books/<%=book.id%>" class="btn btn-primary">more details</a>
-      <a href="books/<%=book.id%>" class="btn btn-danger p">more details</a>
+<button href="books/<%=book.id%>"  class="btn btn-primary">more details</button>
+<form method="post" action="/mybooks/delete/<%=book._id%>">
+    <input type="hidden" value="<%=book._id%>" name="id">
+<button type="submit" class="btn btn-danger" style="margin:5px">delete this book</button></form>
+<button class="btn ">update this book</button>
 
-    </div>
-  
-  </div>
+</div>
+</div>
   <%}%>
 
   

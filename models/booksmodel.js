@@ -29,6 +29,8 @@ exports.getRandombooks = () => {
         });
     });
   };
+
+
   
 exports.getNewbooks = () => {
   return new Promise((resolve, reject) => {
@@ -68,12 +70,30 @@ exports.getAllbooks = () => {
 
 
 
+exports.getMybooks=(userID)=>{
+   return new Promise((resolve, reject) => {
+  mongoose.connect(url)
+  .then(() => {
+    return book.find({userId:userID})
+    .then((books) => {
+        console.log('/n hiii',books)
+      mongoose.disconnect();
+      resolve(books);
+    })
+    .catch((err) => {
+      mongoose.disconnect();
+      reject(err);
+    });
+});
+})}
+
+
+
 exports.getOnebook = (id) => {
   return new Promise((resolve, reject) => {
     mongoose.connect(url)
     .then(() => {
-            //i trid to find it by id but  there is somthing  goning wrong so i dicide to get it like this ;p  i trid: book.findbyId(id) and findOne({_id=id})
-
+            //i trid to find it by id but  there is somthing  goning wrong so i dicide to get it like this ;p  i trid: book.findbyId(id) and findOne({_id=id}
       return book.find({})
     })
       .then((books) => {
@@ -82,12 +102,12 @@ exports.getOnebook = (id) => {
         mongoose.disconnect();
         resolve(book);
       })
-      .catch((err) => {
-      
+      .catch((err) => {      
         reject(err);
       });   
   }); 
 };
+
 
 
 exports.addNewBook = (title,author ,description,date,img,userId) => {
@@ -117,3 +137,22 @@ exports.addNewBook = (title,author ,description,date,img,userId) => {
       });
   }); 
 };
+
+exports.deletebook = (id) => {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(url)
+      .then(() => {
+        return book.deleteOne({_id: id})
+      })
+      .then(() => {
+        mongoose.disconnect()
+        console.log('the book was deleted')
+        resolve(true)
+      })
+      .catch((err) => {
+        mongoose.disconnect()
+        console.log(err)
+        reject(err)
+      })
+  })
+}
