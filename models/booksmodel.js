@@ -6,8 +6,7 @@ var schemabook=mongoose.Schema({
     title:String,
     author:String,
     description:String,
-    image:String, 
-    date:Number,
+    date:String,
     img:String,
     userId:String,
 }) 
@@ -92,21 +91,27 @@ exports.getOnebook = (id) => {
 };
 
 
-exports.addNewbook = (title,author ,description,date) => {
+exports.addNewBook = (title,author ,description,date,img) => {
   return new Promise((resolve, reject) => {
     mongoose.connect(url)
     .then(() => {
       let newbook= new book({
+       _id:'  fd',
         title:title,
         author:author,
         description:description,
-        date:date
+        date:date,
+        img:img,
+    userId:userId
       })
+      console.log(newbook)
       return newbook.save()
-    })
+    }) 
       .then((newbook) => {
-        mongoose.disconnect();
+        console.log(newbook,'woooooooooooooooooooooooooooooooooo')
         resolve(newbook);
+        mongoose.disconnect();
+      
       })
       .catch((err) => {
       

@@ -11,7 +11,10 @@ router.get('/books',gardauth.isauth,bookcontroller.allbooksController)
 
 
 
-router.get('/books/add',bookcontroller.addbookpageController)
+router.get('/books/add',gardauth.isauth,bookcontroller.addbookpageController)
 router.post('/books/add',body,bookcontroller.submitbookController)
-router.get('/books/:id',bookcontroller.onebooksController)
+
+
+
+router.get('/books/:id',gardauth.isauth,bookcontroller.onebooksController)
 module.exports=router   

@@ -1,5 +1,22 @@
 const bookmodel=require('../models/booksmodel')
 
+exports.submitbookController = (req, res, next) => {
+  let title = req.body.title;
+  let author = req.body.author;
+  let description = req.body.description;
+  let date = req.body.date;
+  let img = req.body.img;
+
+  bookmodel.addNewBook(title, author, description, date, img,req.session.userId)
+    .then((book) => {
+      console.log(book);
+      res.redirect('/');
+    })
+    .catch((err) => {
+      req.flash('err', err);
+      next(err);
+    });
+};
 
 exports.booksController = (req, res, next) => {
     bookmodel.getRandombooks()
@@ -40,13 +57,4 @@ exports.booksController = (req, res, next) => {
        
   }
 
-  exports.submitbookController=(req,res,next)=> {
-    let title =req.body.title
-    let author=req.body.author
-    let discription=req.body.discription 
-    let date=req.body.date
-    bookmodel.addNewbook(title,author,date,discription).then(res.render('index'))
-  }
-
-
-
+  
