@@ -8,7 +8,8 @@ var schemabook=mongoose.Schema({
     description:String,
     image:String, 
     date:Number,
-    img:String
+    img:String,
+    userId:String,
 }) 
 
 var book=mongoose.model('book',schemabook)
@@ -21,7 +22,6 @@ exports.getRandombooks = () => {
           return book.aggregate([{ $sample: { size: 3 } }])
         })
         .then((books) => {
-            console.log(books)
           mongoose.disconnect();
           resolve(books);
         })
@@ -39,7 +39,6 @@ exports.getNewbooks = () => {
       return book.find({ }).sort({ date: -1 }).limit(2);
     })
       .then((books) => {
-          console.log('/n hiii',books)
         mongoose.disconnect();
         resolve(books);
       })
@@ -49,6 +48,9 @@ exports.getNewbooks = () => {
       });
   });
 };
+
+
+
 exports.getAllbooks = () => {
   return new Promise((resolve, reject) => {
     mongoose.connect(url)
@@ -65,6 +67,9 @@ exports.getAllbooks = () => {
       });
   });
 })}
+
+
+
 exports.getOnebook = (id) => {
   return new Promise((resolve, reject) => {
     mongoose.connect(url)
@@ -73,11 +78,35 @@ exports.getOnebook = (id) => {
 
       return book.find({})
     })
-      .then((boo) => {
-         let book =boo.find(b=>b._id===id)
+      .then((books) => {
+         let book =books.find(b=>b._id===id)
           console.log('/n hiii',typeof(id) ,book)
         mongoose.disconnect();
         resolve(book);
+      })
+      .catch((err) => {
+      
+        reject(err);
+      });
+  }); 
+};
+
+
+exports.addNewbook = (title,author ,description,date) => {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(url)
+    .then(() => {
+      let newbook= new book({
+        title:title,
+        author:author,
+        description:description,
+        date:date
+      })
+      return newbook.save()
+    })
+      .then((newbook) => {
+        mongoose.disconnect();
+        resolve(newbook);
       })
       .catch((err) => {
       

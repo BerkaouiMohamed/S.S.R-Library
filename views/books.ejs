@@ -1,21 +1,24 @@
 <%-include('parts/navbar.ejs')%>
 <div style="margin: 5%;display: flex; flex-wrap: wrap;">
   <% for(book of allbooks){%>
-  <div class="card" style="width: 250px ;margin: 2%;" >
-    <img src="<%=book.img%>" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title"><%=book.title%></h5>
-      <p class="card-text">
-   <%=book.description%>
+  <div class="card" style="width: 250px;height: 500px ;position: relative ;margin: 2%; " >
+    <img src="<%=book.img%>" class="card-img-top" alt="..."  style="height: 300px;"/>
+    <div class="card-body" >
+      <h5 class="card-title  " style="white-space:nowrap;"><%=book.title%></h5>
+      <p class="card-text"style="white-space:nowrap;">
+   <%=book.author%>
       </p>
-      <a href="books/<%=book.id%>" class="btn btn-primary">Go somewhere</a>
+      <a href="books/<%=book.id%>" class="btn btn-primary">more details</a>
     </div>
   
   </div>
   <%}%>
+
   
 
 
 
-</div>
+</div>  
+<a href="/books/add" style="text-align: center;">
+  <h1 style="background-color: aliceblue;">Add new book</h1></a>
 <%-include('parts/footer.ejs') %>

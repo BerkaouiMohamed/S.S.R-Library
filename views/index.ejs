@@ -40,14 +40,20 @@
             <div class="movies_section_2 layout_padding">
              
                <div class="movies_main"> 
+                  
                   <div class="iamge_movies_main">
                      <% for (var i = 0; i < books.length; i++) { %>
 
                      <div class="iamge_movies">
                         <div class="image_3">
-                  <a href=" books/<%=books[i]._id%>"    ><img  src="<%= books[i].img%>" class="image" style="width:100%"></a>     
+                           <%if (verifuser) {%>
+                  <a href=" books/<%=books[i]._id%>"    >
+                     <%}else{%>
+                     <a href='/login'    >
+                        <%}%>
+                        <img  src="<%= books[i].img%>" class="image" style="width:100%"></a>     
                            <div class="middle">
-                              <div class="playnow_bt">Play Now</div>
+                              <div class="playnow_bt">read the book</div>
                            </div>
                         </div>
                         <h1 class="code_text"><%= books[i].title%></h1>

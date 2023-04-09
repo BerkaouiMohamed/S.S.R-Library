@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
 const userSchema = mongoose.Schema({
   name: String,
   email: String,
@@ -11,7 +12,7 @@ const User = mongoose.model('User', userSchema);
 
 const url = 'mongodb://localhost:27017/BooksProject';
 
-exports.signinmodel = (name, email, password) => {
+exports.signupmodel = (name, email, password) => {
   return new Promise((resolve, reject) => {
     mongoose.connect(url).then(() => {
       return User.findOne({ email: email });
@@ -42,3 +43,47 @@ exports.signinmodel = (name, email, password) => {
     });
   });
 };
+
+
+
+
+exports.signinmodel = (email, password) => {
+  return new Promise((resolve,reject)=>{
+    mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
+
+       return User.findOne({email:email})
+
+    }).then((user)=>{
+        if(user){
+            bcrypt.compare(password,user.password).then((verif)=>{
+                if(verif){
+                    mongoose.disconnect()
+                    resolve(user._id)
+
+                }else{
+                    mongoose.disconnect()
+                    reject('invalid password')
+                }
+
+            })
+        }else{
+            mongoose.disconnect()
+            reject("we don't have this user in our database")
+
+        }
+
+    }).catch(()=>{
+        reject(err)
+    })
+
+
+
+
+
+
+})
+
+
+
+
+}

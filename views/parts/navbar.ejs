@@ -43,15 +43,23 @@
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
                      <a class="nav-link" href="/">Home</a>
-                  </li>
+                  </li><% if(verifuser){ %> 
                   <li class="nav-item">
                      <a class="nav-link" href="/books">books</a>
                   </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/books/add">add new book</a>
+                  </li>
+                  <%}%>
           
-               </ul>
-               <div class="search_icon"><a href="/login"><img src="/images/user-icon.png"><span class="padding_left_15">login</span></a></div>
-               <div class="search_icon"><a href="#"><img src="/images/search-icon.png"><span class="padding_left_15">Search...</span></a></div>
-            </div>
+               </ul><% if(verifuser){ %>     <form method="post"  action="/logout">
+   <button type="submit" class="btn btn" >log out</button>
+</form>           
+        <%}else{%>       <div class="search_icon"><a href="/login"><img src="/images/user-icon.png"><span class="padding_left_15">login</span></a></div>
+               
+               <div class="search_icon"><a href="/signup"><span class="padding_left_15">signup</span></a></div>
+
+           <%}%></div>
          </nav>
       </div>
       <!-- header section end -->

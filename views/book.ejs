@@ -1,18 +1,14 @@
 <%-include('parts/navbar.ejs')%>
 <div style="margin: 5%;display: flex; flex-wrap: wrap;">
-  <div class="card" style="width: 250px ;margin: 2%;" >
-    <img src="..." class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title"><%=book.title%></h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-      <a href="#" class="btn btn-primary" >Go somewhere</a>
-    </div>
+<div style="position: relative; display:flex; justify-content:center ;height: 80vh; width: 100%;" class="contant">
+  <div style='position: relative; height: 100%; width: 100%; ' ><img style="height: 100%;" src="<%= book.img%>"/></div>
+  <div style='position: relative; height: 100%; width: 100%;text-align: center; display: flex; flex-direction: column; justify-content: space-evenly;'>
+  <h1><%= book.title%></h1>
+  <h3><%= book.author%></h3>
+  <p><%= book.description%></p>
+  <button class="btn btn-primary">read the book</button>
   </div>
-
-  
+</div>
 
 
 
