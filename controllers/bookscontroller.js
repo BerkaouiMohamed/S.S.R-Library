@@ -67,6 +67,17 @@ exports.deletebookController=(req,res,next)=>{
   })
 }
 
+exports.updatepagebookController=(req,res,next)=>{
+  bookmodel.updatebookpage(req.params.id).then((books)=>{
+res.render('updatebook', {book:books,verifuser:req.session.userId})
+})
+}
   
 
+exports.updatebookController=(req,res,next)=>{
+  bookmodel.updatebook(req.params.id,req.body.title,req.body.author,req.body.img,req.body.date,req.body.description,req.session.userId ).then(()=>{
+     res.redirect('/mybooks')
+  }).catch((errr)=>
+{console.log(errr)})
+}
   

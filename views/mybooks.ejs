@@ -12,8 +12,8 @@
 <form method="post" action="/mybooks/delete/<%=book._id%>">
     <input type="hidden" value="<%=book._id%>" name="id">
 <button type="submit" class="btn btn-danger" style="margin:5px">delete this book</button></form>
-<button class="btn ">update this book</button>
-
+<a href="/mybooks/update/<%=book._id%>">
+<button  class="btn ">update this book</button></a>
 </div>
 </div>
   <%}%>

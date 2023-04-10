@@ -76,7 +76,6 @@ exports.getMybooks=(userID)=>{
   .then(() => {
     return book.find({userId:userID})
     .then((books) => {
-        console.log('/n hiii',books)
       mongoose.disconnect();
       resolve(books);
     })
@@ -156,3 +155,41 @@ exports.deletebook = (id) => {
       })
   })
 }
+
+
+exports.updatebookpage=(id)=>{
+return new Promise((resolve,reject)=>{
+  mongoose.connect(url)
+.then(()=>{
+return book.findById(id)
+
+}).then((book)=>{
+  resolve(book)
+  mongoose.disconnect()
+}).catch((err)=>{
+  console.log(err)
+  reject(err)
+  mongoose.disconnect()
+})
+})
+}   
+exports.updatebook=(bookid,booktitle,bookauthor,bookimg,bookdate,bookdescription,userId)=>{
+  return new Promise((resolve, reject) => {
+    mongoose.connect(url)
+    .then(() => {
+ 
+      return book.updateOne({_id:bookid},{title:booktitle,author:bookauthor,img:bookimg,date:bookdate,description:bookdescription,userId:userId})
+    }) 
+      .then((book) => {
+        console.log(book,'aaaaaaaaaaa')
+        resolve('updated');
+        mongoose.disconnect();
+      
+      })
+      .catch((err) => {
+      
+        reject(err);
+      });
+  }); 
+};
+
